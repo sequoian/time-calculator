@@ -1,0 +1,16 @@
+
+h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 760px;
+  margin: auto;
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
