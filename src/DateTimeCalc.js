@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DateTimeFields from './DateTimeFields';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import Results from './Results';
 
 class DateTimeCalc extends Component {
   render() {
@@ -22,6 +23,9 @@ class DateTimeCalc extends Component {
             </RadioButtonGroup>
             <DateTimeFields />
           </div>
+          <Results 
+            results="May 25, 2017 3:06 PM"
+          />
         </form>
       </div>
       
