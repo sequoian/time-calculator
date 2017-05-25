@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField'
 
+const fields = [
+  'Days',
+  'Hours',
+  'Minutes',
+  'Seconds'
+]
+
+const styles = {
+  display: 'block',
+  width: '100px'
+}
 
 class TimeSpanFields extends Component {
   render() {
     return (
       <div>
-        <TextField
-          floatingLabelText="Days"
-        />
-        <TextField
-          floatingLabelText="Hours"
-        />
-        <TextField
-          floatingLabelText="Minutes"
-        />
-        <TextField
-          floatingLabelText="Seconds"
-        />
+        {
+          fields.map((item) => (
+            <TextField
+              floatingLabelText={item}
+              type="number"
+              style={styles}
+            />
+          ))
+        }
       </div>
     )
   }
