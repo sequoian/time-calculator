@@ -17,8 +17,14 @@ class SideBar extends Component {
   render() {
     return (
       <List className="side-bar">
-        <ListItem primaryText="Add or Subtract Datetimes" />
-        <ListItem primaryText="Add or Subtract Lengths of Time" />
+        <ListItem 
+          primaryText="Add or Subtract Datetimes"
+          onClick={() => this.props.changePage(PAGES.DATETIMECALC)}
+        />
+        <ListItem 
+          primaryText="Add or Subtract Lengths of Time" 
+          onClick={() => this.props.changePage(PAGES.TIMECALC)}
+        />
       </List>
     );
   }
@@ -30,7 +36,15 @@ class App extends Component {
     this.state = {
       currentPage: PAGES.DATETIMECALC
     }
+    this.changePage = this.changePage.bind(this);
   }
+
+  changePage(page) {
+    this.setState({
+      currentPage: page
+    })
+  }
+
   render() {
     let calculator = null;
     if (this.state.currentPage === PAGES.DATETIMECALC) {
@@ -44,7 +58,7 @@ class App extends Component {
       <div className="App">
         <MuiThemeProvider>
           <div className="main">
-            <SideBar />
+            <SideBar changePage={this.changePage} />
             <div className="calculator">
               {calculator}
             </div>

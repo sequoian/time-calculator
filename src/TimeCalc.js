@@ -11,7 +11,7 @@ class TimeCalc extends Component {
         <form>
           <div className="fields">
             <TimeSpanFields />
-            <RadioButtonGroup>
+            <RadioButtonGroup name="operation">
               <RadioButton
                 value="add"
                 label="Add"

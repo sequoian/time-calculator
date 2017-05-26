@@ -11,7 +11,7 @@ class DateTimeCalc extends Component {
         <form>
           <div className="fields">
             <DateTimeFields />
-            <RadioButtonGroup>
+            <RadioButtonGroup name="operation">
               <RadioButton
                 value="add"
                 label="Add"

@@ -18,8 +18,9 @@ class TimeSpanFields extends Component {
     return (
       <div>
         {
-          fields.map((item) => (
+          fields.map((item, idx) => (
             <TextField
+              key={idx}
               floatingLabelText={item}
               type="number"
               style={styles}
