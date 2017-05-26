@@ -8,6 +8,7 @@ class Results extends Component {
         <RaisedButton
           label="Calculate"
           primary={true}
+          onClick={() => console.log('submitted')}
         />
         <span className="results">{this.props.results}</span>
       </div>

@@ -24,6 +24,12 @@ class TimeSpanFields extends Component {
               floatingLabelText={item}
               type="number"
               style={styles}
+              value={
+                this.props.values ? this.props.values[idx] : ''
+              }
+              name={this.props.name}
+              data-idx={idx}
+              onChange={this.props.change}
             />
           ))
         }
