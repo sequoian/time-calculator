@@ -13,6 +13,7 @@ class TimeCalc extends Component {
     }
     this.change = this.change.bind(this);
     this.changeTimeField = this.changeTimeField.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   change(event, value) {
@@ -29,6 +30,22 @@ class TimeCalc extends Component {
     this.setState({
       [name]: newArray
     })
+  }
+
+  parseTimeField(field) {
+    if (field === '') {
+      return 0;
+    }
+    else {
+      return parseInt(field, 10);
+    }
+  }
+
+  handleSubmit() {
+    const timeFields1 = this.state.timeFields1.map(this.parseTimeField);
+    const timeFields2 = this.state.timeFields2.map(this.parseTimeField);
+    //console.log(timeFields1, timeFields2);
+    //console.log(this.state.timeFields1, this.state.operation, this.state.timeFields2)
   }
 
   render() {
@@ -63,6 +80,7 @@ class TimeCalc extends Component {
             />
           </div>
           <Results 
+            handleSubmit={this.handleSubmit}
             results="1 year, 14 days, 22 minutes"
           />
         </form>
