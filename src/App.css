@@ -27,3 +27,17 @@ form {
   font-family: Courier, monospace;
   background-color: #e4e4e4;
 }
+
+.main {
+  display: flex;
+}
+
+.side-bar {
+  flex: 1;
+  margin: 5px;
+  border-right: 1px solid #dadada;
+}
+
+.calculator {
+  flex: 5;
+}
