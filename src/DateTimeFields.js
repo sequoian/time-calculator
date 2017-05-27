@@ -10,9 +10,11 @@ class DateTimeFields extends Component {
         <DatePicker 
           hintText="Select date"
           locale="en-US"
+          onChange={this.props.handleDateChange}
         />
         <TimePicker 
           hintText="Select time"
+          onChange={this.props.handleTimeChange}
         />
       </div>
     )

@@ -34,7 +34,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: PAGES.TIMECALC
+      currentPage: PAGES.DATETIMECALC
     }
     this.changePage = this.changePage.bind(this);
   }
