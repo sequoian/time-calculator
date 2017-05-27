@@ -53,7 +53,33 @@ class DateTimeCalc extends Component {
     }) 
   }
 
+  // Expects moment.js dateimes or null values, returns a single moment.js datetime
+  // Isolates the date from date's datetime, and the time for time's datetime
+  createDateTime(date, time) {
+    // set default values for any inputs that were not chosen
+    if (!date) {
+      date = moment();
+    }
+    if (!time) {
+      time = moment();
+    }
+
+    return moment({
+      y: date.year(),
+      M: date.month(),
+      d: date.date(),
+      h: time.hour(),
+      m: time.minute(),
+      s: 0,
+      ms: 0
+    })
+  }
+
   handleSubmit() {
+    // combine the dates and times
+    const datetime1 = this.createDateTime(this.state.date1, this.state.time1);
+    const datetime2 = this.createDateTime(this.state.date2, this.state.time2);
+    
   }
 
   render() {

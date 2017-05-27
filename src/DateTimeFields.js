@@ -15,6 +15,7 @@ class DateTimeFields extends Component {
         <TimePicker 
           hintText="Select time"
           onChange={this.props.handleTimeChange}
+          pedantic={true}
         />
       </div>
     )
