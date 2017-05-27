@@ -10,7 +10,7 @@ class Results extends Component {
           primary={true}
           onClick={this.props.handleSubmit}
         />
-        <span className="results">{this.props.results}</span>
+        {this.props.results ? <span className="results">{this.props.results}</span> : null}
       </div>
     )
   }
