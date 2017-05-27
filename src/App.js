@@ -18,7 +18,7 @@ class SideBar extends Component {
     return (
       <List className="side-bar">
         <ListItem 
-          primaryText="Add or Subtract Datetimes"
+          primaryText="Difference Between Two Datetimes"
           onClick={() => this.props.changePage(PAGES.DATETIMECALC)}
         />
         <ListItem 

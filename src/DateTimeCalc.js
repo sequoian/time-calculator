@@ -12,14 +12,12 @@ class DateTimeCalc extends Component {
       time1: null,
       date2: null,
       time2: null,
-      operation: 'add',
       results: null
     }
     this.changeFirstDate = this.changeFirstDate.bind(this);
     this.changeFirstTime = this.changeFirstTime.bind(this);
     this.changeSecondDate = this.changeSecondDate.bind(this);
     this.changeSecondTime = this.changeSecondTime.bind(this);
-    this.changeOperation = this.changeOperation.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -45,12 +43,6 @@ class DateTimeCalc extends Component {
     this.setState({
       time2: moment(value)
     });
-  }
-
-  changeOperation(event, value) {
-    this.setState({
-      [event.target.name]: value
-    }) 
   }
 
   // Expects moment.js dateimes or null values, returns a single moment.js datetime
@@ -80,26 +72,15 @@ class DateTimeCalc extends Component {
     const datetime1 = this.createDateTime(this.state.date1, this.state.time1);
     const datetime2 = this.createDateTime(this.state.date2, this.state.time2);
 
-    // convert datetimes into timestamps to facilitate operation
-    const timestamp1 = datetime1.unix();
-    const timestamp2 = datetime2.unix();
+    // convert datetimes into timestamps and perform operation
+    const timestamp1 = datetime1.valueOf();
+    const timestamp2 = datetime2.valueOf();
+    const result = moment.duration(timestamp1 - timestamp2);
 
-    // perform operation
-    let result = null;
-    const op = this.state.operation;
-    if (op === 'add') {
-      result = timestamp1 + timestamp2;
-    }
-    else if (op === 'subtract') {
-      result = timestamp1 - timestamp2;
-    }
-    result = moment.duration(result);
-
-    // convert timestamp back into a datetime, then format and store into state
+    // convert timestamp back into a duration, then format and store into state
     /**
      * TODO: fix moment-duration-format
      */
-    //result = moment.unix(result);
     const format = 'd [days], h [hours], m [minutes], s [seconds]';
     this.setState({
       results: result.format(format)
@@ -109,7 +90,7 @@ class DateTimeCalc extends Component {
   render() {
     return (
       <div>
-        <h1>Add or Subtract Moments in Time</h1>
+        <h1>Difference Between Two Datetimes</h1>
         <form>
           <div className="fields">
             <DateTimeFields 
@@ -118,13 +99,8 @@ class DateTimeCalc extends Component {
             />
             <RadioButtonGroup 
               name="operation"
-              valueSelected={this.state.operation}
-              onChange={this.changeOperation}
+              valueSelected="subtract"
             >
-              <RadioButton
-                value="add"
-                label="Add"
-              />
               <RadioButton
                 value="subtract"
                 label="Subtract"
